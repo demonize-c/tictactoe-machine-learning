@@ -1,0 +1,4 @@
+player2_move_1,player2_move_2,player2_move_3,player2_move_4,player2_move_5,player2_move_6,player2_move_7,player2_move_8,player2_move_9,player1_move_1,player1_move_2,player1_move_3,player1_move_4,player1_move_5,player1_move_6,player1_move_7,player1_move_8,player1_move_9
+0,0,0,0,0,-1,0,0,0,0,0,1,0,0,-1,0,0,0
+0,0,1,0,0,-1,0,-1,0,1,0,1,0,0,-1,0,-1,0
+1,0,1,0,0,-1,0,-1,-1,1,1,1,0,0,-1,0,-1,-1

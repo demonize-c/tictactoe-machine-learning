@@ -1,0 +1,23 @@
+{
+  "name": "tictactoe-ml",
+  "version": "1.0.0",
+  "description": "Generate Tic-Tac-Toe CSV records for minimax vs minimax.",
+  "main": "src/datamaker/generateCsv.js",
+  "scripts": {
+    "generate:csv": "node src/datamaker/generateCsv.js",
+    "view:csv": "node src/tools/csvViewer.js",
+    "clear:records": "node src/tools/clearRecords.js",
+    "train:model": "node model/trainModel.js",
+    "play:game": "node game/playTicTacToe.js"
+  },
+  "dependencies": {
+    "brain.js": "^1.6.1"
+  },
+  "keywords": [
+    "tictactoe",
+    "minimax",
+    "csv"
+  ],
+  "author": "",
+  "license": "MIT"
+}
