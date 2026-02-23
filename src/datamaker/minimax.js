@@ -56,7 +56,8 @@ function minimaxScore(board, isMaximizing) {
   return best;
 }
 
-function getMinimaxMove(board) {
+function getMinimaxMove(board, options = {}) {
+  const randomizeTies = options.randomizeTies !== false;
   let bestScore = -Infinity;
   let bestMoves = [];
 
@@ -79,13 +80,17 @@ function getMinimaxMove(board) {
     return null;
   }
 
-  const randomIndex = Math.floor(Math.random() * bestMoves.length);
-  return bestMoves[randomIndex];
+  if (randomizeTies) {
+    const randomIndex = Math.floor(Math.random() * bestMoves.length);
+    return bestMoves[randomIndex];
+  }
+
+  return bestMoves[0];
 }
 
-function getMinimaxMoveForPlayer(board, player) {
+function getMinimaxMoveForPlayer(board, player, options = {}) {
   if (player === MINMAX) {
-    return getMinimaxMove([...board]);
+    return getMinimaxMove([...board], options);
   }
 
   if (player === PLAYER2) {
@@ -95,7 +100,7 @@ function getMinimaxMoveForPlayer(board, player) {
       }
       return cell * -1;
     });
-    return getMinimaxMove(mirroredBoard);
+    return getMinimaxMove(mirroredBoard, options);
   }
 
   throw new Error("Invalid player for minimax move.");

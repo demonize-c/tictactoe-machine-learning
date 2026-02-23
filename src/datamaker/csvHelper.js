@@ -160,6 +160,7 @@ function collectUniqueGames({
       maxMinmaxMoves,
       {
       startPlayer,
+      minmaxRandomizeTies: !requirePlayer1NotLose,
       minmaxFirstMoveRandomness: boostedFirstMoveRandomness,
       player1RandomMoveIndexes,
       player2Strategy: "minmax",

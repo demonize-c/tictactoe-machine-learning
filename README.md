@@ -50,6 +50,7 @@ Current generation behavior:
 
 - Start player is mixed ~50/50 between Player1-first and Player2-first.
 - In `smart` mode, recorded games keep Player1 as non-losing side (Player1 wins + draws; no Player2 wins).
+- In `smart` mode, minimax tie-breaking is deterministic; only configured randomness throttles can introduce randomness.
 - Incomplete games are not recorded.
 
 ### CSV Row Format

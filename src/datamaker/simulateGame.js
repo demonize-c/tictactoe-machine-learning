@@ -32,14 +32,18 @@ function getRandomFreeMove(board) {
   return freeMoves[randomIndex];
 }
 
-function getPlayer2BaseMove(board, player2Strategy) {
+function getPlayer2BaseMove(board, player2Strategy, minmaxOptions) {
   if (player2Strategy === "random") {
     return getRandomPlayerMove(board);
   }
-  return getMinimaxMoveForPlayer(board, PLAYER2);
+  return getMinimaxMoveForPlayer(board, PLAYER2, minmaxOptions);
 }
 
 function getPlayer2Move(board, player2Moves, options) {
+  const minmaxOptions = {
+    randomizeTies: options.minmaxRandomizeTies !== false
+  };
+
   if (
     options.player2RandomMoveIndexes instanceof Set &&
     options.player2RandomMoveIndexes.has(player2Moves)
@@ -49,7 +53,7 @@ function getPlayer2Move(board, player2Moves, options) {
 
   const player2Strategy =
     options.player2Strategy === "random" ? "random" : "minmax";
-  return getPlayer2BaseMove(board, player2Strategy);
+  return getPlayer2BaseMove(board, player2Strategy, minmaxOptions);
 }
 
 function shouldUseRandomFirstMove(minmaxMoves, options) {
@@ -78,6 +82,9 @@ function shouldUseRandomMinmaxMove(minmaxMoves, options) {
 
 function simulateGame(maxMinmaxMoves, options = {}) {
   const startPlayer = options.startPlayer === "player2" ? "player2" : "minmax";
+  const minmaxOptions = {
+    randomizeTies: options.minmaxRandomizeTies !== false
+  };
   const board = Array(BOARD_SIZE).fill(EMPTY);
   let minmaxMoves = 0;
   let player2Moves = 0;
@@ -102,7 +109,7 @@ function simulateGame(maxMinmaxMoves, options = {}) {
 
     const minmaxMove = shouldUseRandomMinmaxMove(minmaxMoves, options)
       ? getRandomFreeMove(board)
-      : getMinimaxMove(board);
+      : getMinimaxMove(board, minmaxOptions);
 
     if (minmaxMove === null) {
       break;
